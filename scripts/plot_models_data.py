@@ -39,9 +39,10 @@ for H0_plot in H0_list:
     else:
         plt.plot(ells, cl_tt, label=f'$H_0 = {H0_plot:.1f}$')
 
+
 planck_data = Table.read('data/COM_PowerSpect_CMB_R2.02.fits', hdu=7)
 planck_data_lowell = Table.read('data/COM_PowerSpect_CMB_R2.02.fits', hdu=1)
-plt.errorbar(planck_data['ELL'], planck_data['D_ELL'], yerr=planck_data['ERR'], fmt='o', markersize=2, capsize=3, color='k', label='\emph{Planck} 2018 data')
+plt.errorbar(planck_data['ELL'], planck_data['D_ELL'], yerr=planck_data['ERR'], fmt='o', markersize=2, capsize=3, color='k', label='\emph{Planck} PDR2 (2015) data')
 plt.errorbar(planck_data_lowell['ELL'], planck_data_lowell['D_ELL'], yerr=[planck_data_lowell['ERRDOWN'], planck_data_lowell['ERRUP']], fmt='o', markersize=2, capsize=3, label=None, color='k')
 
 plt.legend(fontsize='small')
@@ -49,14 +50,14 @@ plt.xscale('log')
 plt.yscale('log')
 plt.xlabel('$l$')
 plt.ylabel('$\mathcal{D}_l$')
-plt.xlim([2,6000])
-plt.ylim([1.e1, 1.e4])
+plt.xlim([2,3000])
+plt.ylim([3.e1, 1.e4])
 
 plt.savefig('./plots/cmb_example.png', dpi=300, bbox_inches='tight')
 
 plt.clf()
 
-plt.errorbar(planck_data['ELL'], planck_data['D_ELL'], yerr=planck_data['ERR'], fmt='o', markersize=2, capsize=3, color='k', label='\emph{Planck} 2018 data')
+plt.errorbar(planck_data['ELL'], planck_data['D_ELL'], yerr=planck_data['ERR'], fmt='o', markersize=2, capsize=3, color='k', label='\emph{Planck} PDR2 (2015) data')
 plt.errorbar(planck_data_lowell['ELL'], planck_data_lowell['D_ELL'], yerr=[planck_data_lowell['ERRDOWN'], planck_data_lowell['ERRUP']], fmt='o', markersize=2, capsize=3, label=None, color='k')
 
 plt.legend(fontsize='small')
